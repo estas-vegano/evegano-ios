@@ -12,6 +12,7 @@
 		11B6B7C31C1C7AFC00D4A986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C11C1C7AFC00D4A986 /* Main.storyboard */; };
 		11B6B7C51C1C7AFC00D4A986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */; };
 		11B6B7C81C1C7AFC00D4A986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C61C1C7AFC00D4A986 /* LaunchScreen.storyboard */; };
+		CAF5A41EB281B866014DB7FE /* libPods-evegano-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 722442937D69BCEAA7799D1E /* libPods-evegano-ios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11B6B7C71C1C7AFC00D4A986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11B6B7C91C1C7AFC00D4A986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19BF6D8597618D1F5739A043 /* Pods-evegano-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		5E2B0B303A0F2BC4057AB518 /* Pods-evegano-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.release.xcconfig"; sourceTree = "<group>"; };
+		722442937D69BCEAA7799D1E /* libPods-evegano-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-evegano-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF5A41EB281B866014DB7FE /* libPods-evegano-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				11B6B7BC1C1C7AFC00D4A986 /* evegano-ios */,
 				11B6B7BB1C1C7AFC00D4A986 /* Products */,
+				AF22A02FCC7FE9C99B4AA274 /* Pods */,
+				578B3F7C1BAF3CBCD6A4C073 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = "evegano-ios";
 			sourceTree = "<group>";
 		};
+		578B3F7C1BAF3CBCD6A4C073 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				722442937D69BCEAA7799D1E /* libPods-evegano-ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF22A02FCC7FE9C99B4AA274 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19BF6D8597618D1F5739A043 /* Pods-evegano-ios.debug.xcconfig */,
+				5E2B0B303A0F2BC4057AB518 /* Pods-evegano-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11B6B7CC1C1C7AFC00D4A986 /* Build configuration list for PBXNativeTarget "evegano-ios" */;
 			buildPhases = (
+				21806EC4E89A6E5262C2E4E3 /* Check Pods Manifest.lock */,
 				11B6B7B61C1C7AFC00D4A986 /* Sources */,
 				11B6B7B71C1C7AFC00D4A986 /* Frameworks */,
 				11B6B7B81C1C7AFC00D4A986 /* Resources */,
+				BEACC90499BE36935AF58B7C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,6 +154,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21806EC4E89A6E5262C2E4E3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BEACC90499BE36935AF58B7C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11B6B7B61C1C7AFC00D4A986 /* Sources */ = {
@@ -244,8 +303,10 @@
 		};
 		11B6B7CD1C1C7AFC00D4A986 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19BF6D8597618D1F5739A043 /* Pods-evegano-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "evegano-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.nazavrik.evegano-ios";
@@ -255,8 +316,10 @@
 		};
 		11B6B7CE1C1C7AFC00D4A986 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E2B0B303A0F2BC4057AB518 /* Pods-evegano-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "evegano-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.nazavrik.evegano-ios";
@@ -283,6 +346,7 @@
 				11B6B7CE1C1C7AFC00D4A986 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
