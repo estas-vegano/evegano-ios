@@ -5,10 +5,9 @@ inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
 
+use_frameworks!
+xcodeproj 'evegano-ios'
+
 target 'evegano-ios' do
-    pod 'AFNetworking'
-    pod 'BlocksKit'
-    pod 'EasyMapping'
-    pod 'SDiPhoneVersion'
-    pod 'UIColor+Hex'
+    pod 'Alamofire', '~> 3.0'
 end
