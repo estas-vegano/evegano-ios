@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let api: EV_ApiRequest = EV_ApiRequest()
+        api.requestCheckProduct("161", type: "barcode")
     }
 
     override func didReceiveMemoryWarning() {

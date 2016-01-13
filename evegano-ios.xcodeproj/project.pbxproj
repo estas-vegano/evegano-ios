@@ -7,15 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1131F41C1C2F264D0099CA77 /* EV_ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F41B1C2F264D0099CA77 /* EV_ApiRequest.swift */; settings = {ASSET_TAGS = (); }; };
+		1131F4211C2F26650099CA77 /* EV_CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F41E1C2F26650099CA77 /* EV_CategoryModel.swift */; settings = {ASSET_TAGS = (); }; };
+		1131F4221C2F26650099CA77 /* EV_ProducerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F41F1C2F26650099CA77 /* EV_ProducerModel.swift */; settings = {ASSET_TAGS = (); }; };
+		1131F4231C2F26650099CA77 /* EV_ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4201C2F26650099CA77 /* EV_ProductModel.swift */; settings = {ASSET_TAGS = (); }; };
+		1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */; settings = {ASSET_TAGS = (); }; };
 		11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */; };
 		11B6B7C01C1C7AFC00D4A986 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BF1C1C7AFC00D4A986 /* ViewController.swift */; };
 		11B6B7C31C1C7AFC00D4A986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C11C1C7AFC00D4A986 /* Main.storyboard */; };
 		11B6B7C51C1C7AFC00D4A986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */; };
 		11B6B7C81C1C7AFC00D4A986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C61C1C7AFC00D4A986 /* LaunchScreen.storyboard */; };
-		CAF5A41EB281B866014DB7FE /* libPods-evegano-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 722442937D69BCEAA7799D1E /* libPods-evegano-ios.a */; };
+		F2B2BA79B1A9A9DC01AF0E74 /* Pods_evegano_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A35FE7BEFC5A055DA900C2 /* Pods_evegano_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10A35FE7BEFC5A055DA900C2 /* Pods_evegano_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_evegano_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1131F41B1C2F264D0099CA77 /* EV_ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EV_ApiRequest.swift; sourceTree = "<group>"; };
+		1131F41E1C2F26650099CA77 /* EV_CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EV_CategoryModel.swift; sourceTree = "<group>"; };
+		1131F41F1C2F26650099CA77 /* EV_ProducerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EV_ProducerModel.swift; sourceTree = "<group>"; };
+		1131F4201C2F26650099CA77 /* EV_ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EV_ProductModel.swift; sourceTree = "<group>"; };
+		1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSerializableProtocol.swift; sourceTree = "<group>"; };
 		11B6B7BA1C1C7AFC00D4A986 /* evegano-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "evegano-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11B6B7BF1C1C7AFC00D4A986 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +36,6 @@
 		11B6B7C91C1C7AFC00D4A986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19BF6D8597618D1F5739A043 /* Pods-evegano-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		5E2B0B303A0F2BC4057AB518 /* Pods-evegano-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.release.xcconfig"; sourceTree = "<group>"; };
-		722442937D69BCEAA7799D1E /* libPods-evegano-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-evegano-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,13 +43,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAF5A41EB281B866014DB7FE /* libPods-evegano-ios.a in Frameworks */,
+				F2B2BA79B1A9A9DC01AF0E74 /* Pods_evegano_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1131F41A1C2F263D0099CA77 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1131F41B1C2F264D0099CA77 /* EV_ApiRequest.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		1131F41D1C2F26520099CA77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1131F41E1C2F26650099CA77 /* EV_CategoryModel.swift */,
+				1131F41F1C2F26650099CA77 /* EV_ProducerModel.swift */,
+				1131F4201C2F26650099CA77 /* EV_ProductModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1131F4241C2F266B0099CA77 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		11B6B7B11C1C7AFC00D4A986 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +97,9 @@
 		11B6B7BC1C1C7AFC00D4A986 /* evegano-ios */ = {
 			isa = PBXGroup;
 			children = (
+				1131F4241C2F266B0099CA77 /* Protocols */,
+				1131F41D1C2F26520099CA77 /* Models */,
+				1131F41A1C2F263D0099CA77 /* Network */,
 				11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */,
 				11B6B7BF1C1C7AFC00D4A986 /* ViewController.swift */,
 				11B6B7C11C1C7AFC00D4A986 /* Main.storyboard */,
@@ -74,7 +113,7 @@
 		578B3F7C1BAF3CBCD6A4C073 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				722442937D69BCEAA7799D1E /* libPods-evegano-ios.a */,
+				10A35FE7BEFC5A055DA900C2 /* Pods_evegano_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,6 +139,7 @@
 				11B6B7B71C1C7AFC00D4A986 /* Frameworks */,
 				11B6B7B81C1C7AFC00D4A986 /* Resources */,
 				BEACC90499BE36935AF58B7C /* Copy Pods Resources */,
+				41CE4A9BEFFB6EDB11917AA2 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -171,6 +211,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		41CE4A9BEFFB6EDB11917AA2 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BEACC90499BE36935AF58B7C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,6 +250,11 @@
 			files = (
 				11B6B7C01C1C7AFC00D4A986 /* ViewController.swift in Sources */,
 				11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */,
+				1131F4231C2F26650099CA77 /* EV_ProductModel.swift in Sources */,
+				1131F4211C2F26650099CA77 /* EV_CategoryModel.swift in Sources */,
+				1131F4221C2F26650099CA77 /* EV_ProducerModel.swift in Sources */,
+				1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */,
+				1131F41C1C2F264D0099CA77 /* EV_ApiRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
