@@ -9,7 +9,7 @@
 import Foundation
 
 class EV_ProducerModel {
-    var producerId: Int
+    let producerId: Int
     var title: String
     var ethical: Bool?
     

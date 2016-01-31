@@ -9,8 +9,8 @@
 import Foundation
 
 final class EV_ProductModel : ResponseObjectSerializable {
-    var productId: Int
-    var title: String
+    let productId: Int
+    let title: String
     var info: String?
     var photo: String?
     var producer: EV_ProducerModel
