@@ -13,7 +13,7 @@
 		1131F4231C2F26650099CA77 /* EV_ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4201C2F26650099CA77 /* EV_ProductModel.swift */; settings = {ASSET_TAGS = (); }; };
 		1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */; settings = {ASSET_TAGS = (); }; };
 		11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */; };
-		11B6B7C01C1C7AFC00D4A986 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BF1C1C7AFC00D4A986 /* ViewController.swift */; };
+		11B6B7C01C1C7AFC00D4A986 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BF1C1C7AFC00D4A986 /* ProductInfoViewController.swift */; };
 		11B6B7C31C1C7AFC00D4A986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C11C1C7AFC00D4A986 /* Main.storyboard */; };
 		11B6B7C51C1C7AFC00D4A986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */; };
 		11B6B7C81C1C7AFC00D4A986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C61C1C7AFC00D4A986 /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSerializableProtocol.swift; sourceTree = "<group>"; };
 		11B6B7BA1C1C7AFC00D4A986 /* evegano-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "evegano-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		11B6B7BF1C1C7AFC00D4A986 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		11B6B7BF1C1C7AFC00D4A986 /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
 		11B6B7C21C1C7AFC00D4A986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11B6B7C71C1C7AFC00D4A986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 				1131F41D1C2F26520099CA77 /* Models */,
 				1131F41A1C2F263D0099CA77 /* Network */,
 				11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */,
-				11B6B7BF1C1C7AFC00D4A986 /* ViewController.swift */,
+				11B6B7BF1C1C7AFC00D4A986 /* ProductInfoViewController.swift */,
 				11B6B7C11C1C7AFC00D4A986 /* Main.storyboard */,
 				11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */,
 				11B6B7C61C1C7AFC00D4A986 /* LaunchScreen.storyboard */,
@@ -248,7 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11B6B7C01C1C7AFC00D4A986 /* ViewController.swift in Sources */,
+				11B6B7C01C1C7AFC00D4A986 /* ProductInfoViewController.swift in Sources */,
 				11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */,
 				1131F4231C2F26650099CA77 /* EV_ProductModel.swift in Sources */,
 				1131F4211C2F26650099CA77 /* EV_CategoryModel.swift in Sources */,

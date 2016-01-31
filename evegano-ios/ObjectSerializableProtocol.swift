@@ -38,6 +38,8 @@ extension Request {
             }
         }
         
-        return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
+        return response(responseSerializer: responseSerializer, completionHandler: { (response: Response<T, NSError>) in
+            completionHandler(response)
+        })
     }
 }
