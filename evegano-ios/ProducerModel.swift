@@ -1,5 +1,5 @@
 //
-//  EV_ProducerModel.swift
+//  ProducerModel.swift
 //  evegano-ios
 //
 //  Created by alexander on 26.12.15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EV_ProducerModel {
+class ProducerModel {
     let producerId: Int
     var title: String
     var ethical: Bool?

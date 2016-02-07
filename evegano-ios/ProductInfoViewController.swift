@@ -16,9 +16,9 @@ class ProductInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let api: EV_ApiRequest = EV_ApiRequest()
+        let api: ApiRequest = ApiRequest()
         api.requestCheckProduct("161", type: "barcode") {
-            (result: EV_ProductModel) in
+            (result: ProductModel) in
             print(result)
             if let imageUrl = result.photo {
                 api.requestLoadImage(imageUrl, completionHandler: { (result) -> Void in

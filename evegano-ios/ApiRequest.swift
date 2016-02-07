@@ -14,17 +14,17 @@ let kBaseUrl: String = "http://evegano.free-node.ru/api"
 let kApiVersion: String = "/v1"
 let kMethodCheckProduct: String = "/check"
 
-enum EV_CodeType {
-    case EV_BarcodeType
-    case EV_QrcodeType
+enum CodeType {
+    case BarcodeType
+    case QrcodeType
 }
 
-class EV_ApiRequest {
-    internal func requestCheckProduct(codeId: String, type: String, completionHandler:(result: EV_ProductModel) -> Void) {
+class ApiRequest {
+    internal func requestCheckProduct(codeId: String, type: String, completionHandler:(result: ProductModel) -> Void) {
         let url = kBaseUrl + kApiVersion + kMethodCheckProduct
         let parameters = ["code": "161", "type": "barcode"]
         let header = ["￼Accept-Language": "en"]
-        Alamofire.request(.GET, url, parameters:parameters, headers: header).responseObject { (response: Response<EV_ProductModel, NSError>) in
+        Alamofire.request(.GET, url, parameters:parameters, headers: header).responseObject { (response: Response<ProductModel, NSError>) in
             completionHandler(result: (response.result.value)!)
         }
     }

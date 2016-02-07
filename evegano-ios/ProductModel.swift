@@ -8,20 +8,20 @@
 
 import Foundation
 
-final class EV_ProductModel : ResponseObjectSerializable {
+final class ProductModel : ResponseObjectSerializable {
     let productId: Int
     let title: String
     var info: String?
     var photo: String?
-    var producer: EV_ProducerModel
-    var category: EV_CategoryModel
+    var producer: ProducerModel
+    var category: CategoryModel
     
     init?(response: NSHTTPURLResponse, representation: AnyObject) {
         self.productId = representation.valueForKeyPath("id") as! Int
         self.title = representation.valueForKeyPath("title") as! String
         self.info = representation.valueForKeyPath("info") as? String
         self.photo = representation.valueForKeyPath("photo") as? String
-        self.producer = EV_ProducerModel(response: response, representation: representation.valueForKeyPath("producer")!)!
-        self.category = EV_CategoryModel(response: response, representation: representation.valueForKeyPath("category")!)!
+        self.producer = ProducerModel(response: response, representation: representation.valueForKeyPath("producer")!)!
+        self.category = CategoryModel(response: response, representation: representation.valueForKeyPath("category")!)!
     }
 }
