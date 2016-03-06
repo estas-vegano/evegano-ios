@@ -48,6 +48,10 @@ class ProductInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func complainButtonDown(sender: UIButton) {
+        let alertView: UIAlertView = UIAlertView(title: "Fu-u-u-u", message: "Ябеда!", delegate: nil, cancelButtonTitle: "Ok")
+        alertView.show()
+    }
+    
 }
 
