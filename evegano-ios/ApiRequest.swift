@@ -13,6 +13,7 @@ import AlamofireImage
 let kBaseUrl: String = "http://evegano.free-node.ru/api"
 let kApiVersion: String = "/v1"
 let kMethodCheckProduct: String = "/check"
+let kMethodCategoryList: String = "/categories"
 
 enum CodeType {
     case BarcodeType
@@ -22,9 +23,17 @@ enum CodeType {
 class ApiRequest {
     internal func requestCheckProduct(codeId: String, type: String, completionHandler:(result: ProductModel) -> Void) {
         let url = kBaseUrl + kApiVersion + kMethodCheckProduct
-        let parameters = ["code": "161", "type": "barcode"]
+        let parameters = ["code": codeId, "type": type]
         let header = ["￼Accept-Language": "en"]
         Alamofire.request(.GET, url, parameters:parameters, headers: header).responseObject { (response: Response<ProductModel, NSError>) in
+            completionHandler(result: (response.result.value)!)
+        }
+    }
+    
+    internal func requestCategories(completionHandler:(result: [CategoryItemModel]) -> Void ) {
+        let url = kBaseUrl + kApiVersion + kMethodCategoryList
+        let header = ["￼Accept-Language": "en"]
+        Alamofire.request(.GET, url, parameters:nil, headers: header).responseCollection { (response: Response<[CategoryItemModel], NSError>) in
             completionHandler(result: (response.result.value)!)
         }
     }

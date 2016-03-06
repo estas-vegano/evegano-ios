@@ -12,12 +12,14 @@
 		1131F4221C2F26650099CA77 /* ProducerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F41F1C2F26650099CA77 /* ProducerModel.swift */; settings = {ASSET_TAGS = (); }; };
 		1131F4231C2F26650099CA77 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4201C2F26650099CA77 /* ProductModel.swift */; settings = {ASSET_TAGS = (); }; };
 		1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */; settings = {ASSET_TAGS = (); }; };
+		11588A851C8C4C4D00118E32 /* CollectionSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11588A841C8C4C4D00118E32 /* CollectionSerializableProtocol.swift */; settings = {ASSET_TAGS = (); }; };
 		119D00D11C5E44C7000CD03E /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D00D01C5E44C7000CD03E /* AddProductViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */; };
 		11B6B7C01C1C7AFC00D4A986 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BF1C1C7AFC00D4A986 /* ProductInfoViewController.swift */; };
 		11B6B7C31C1C7AFC00D4A986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C11C1C7AFC00D4A986 /* Main.storyboard */; };
 		11B6B7C51C1C7AFC00D4A986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */; };
 		11B6B7C81C1C7AFC00D4A986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C61C1C7AFC00D4A986 /* LaunchScreen.storyboard */; };
+		11EF85DF1C67C2070067F10E /* CategoryItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF85DE1C67C2070067F10E /* CategoryItemModel.swift */; settings = {ASSET_TAGS = (); }; };
 		F2B2BA79B1A9A9DC01AF0E74 /* Pods_evegano_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A35FE7BEFC5A055DA900C2 /* Pods_evegano_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,7 @@
 		1131F41F1C2F26650099CA77 /* ProducerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerModel.swift; sourceTree = "<group>"; };
 		1131F4201C2F26650099CA77 /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSerializableProtocol.swift; sourceTree = "<group>"; };
+		11588A841C8C4C4D00118E32 /* CollectionSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSerializableProtocol.swift; sourceTree = "<group>"; };
 		119D00D01C5E44C7000CD03E /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		11B6B7BA1C1C7AFC00D4A986 /* evegano-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "evegano-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11B6B7C71C1C7AFC00D4A986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11B6B7C91C1C7AFC00D4A986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11EF85DE1C67C2070067F10E /* CategoryItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItemModel.swift; sourceTree = "<group>"; };
 		19BF6D8597618D1F5739A043 /* Pods-evegano-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		5E2B0B303A0F2BC4057AB518 /* Pods-evegano-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +70,7 @@
 				1131F41E1C2F26650099CA77 /* CategoryModel.swift */,
 				1131F41F1C2F26650099CA77 /* ProducerModel.swift */,
 				1131F4201C2F26650099CA77 /* ProductModel.swift */,
+				11EF85DE1C67C2070067F10E /* CategoryItemModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -74,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */,
+				11588A841C8C4C4D00118E32 /* CollectionSerializableProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -266,6 +272,8 @@
 				1131F4221C2F26650099CA77 /* ProducerModel.swift in Sources */,
 				1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */,
 				1131F41C1C2F264D0099CA77 /* ApiRequest.swift in Sources */,
+				11588A851C8C4C4D00118E32 /* CollectionSerializableProtocol.swift in Sources */,
+				11EF85DF1C67C2070067F10E /* CategoryItemModel.swift in Sources */,
 				119D00D11C5E44C7000CD03E /* AddProductViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
