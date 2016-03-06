@@ -11,12 +11,19 @@ import UIKit
 class ProductInfoViewController: UIViewController {
 
     @IBOutlet weak var photoImageView: UIImageView!
-    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var producerLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var isEthic: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let api: ApiRequest = ApiRequest()
+        api.requestCategories { (result:[CategoryItemModel]) -> Void in
+            
+        }
+        
         api.requestCheckProduct("161", type: "barcode") {
             (result: ProductModel) in
             print(result)
@@ -24,6 +31,14 @@ class ProductInfoViewController: UIViewController {
                 api.requestLoadImage(imageUrl, completionHandler: { (result) -> Void in
                     self.photoImageView.image = result
                 })
+            }
+            self.nameLabel.text = result.title
+            self.producerLabel.text = result.producer.title
+            self.descriptionLabel.text = result.info
+            if let ethical = result.producer.ethical {
+                self.isEthic.text = ethical ? "YES" : "NO"
+            } else {
+                self.isEthic.text = "NO"
             }
         }
     }
