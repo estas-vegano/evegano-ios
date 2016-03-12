@@ -19,14 +19,31 @@ class ProductInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let api: ApiRequest = ApiRequest()
-        api.requestCategories { (result:[CategoryItemModel]) -> Void in
-            
-        }
         
-        api.requestCheckProduct("161", type: "barcode") {
+        
+//        api.requestCategories { (result:[CategoryItemModel]) -> Void in
+//            
+//        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
+    func loadData() {
+        let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
+        spiner.startAnimating()
+        
+        let api: ApiRequest = ApiRequest()
+        ApiRequest().requestCheckProduct("161", type: "barcode") {
             (result: ProductModel) in
-            print(result)
+            spiner.stopAnimating()
             if let imageUrl = result.photo {
                 api.requestLoadImage(imageUrl, completionHandler: { (result) -> Void in
                     self.photoImageView.image = result
@@ -42,12 +59,7 @@ class ProductInfoViewController: UIViewController {
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     @IBAction func complainButtonDown(sender: UIButton) {
         let alertView: UIAlertView = UIAlertView(title: "Fu-u-u-u", message: "Ябеда!", delegate: nil, cancelButtonTitle: "Ok")
         alertView.show()

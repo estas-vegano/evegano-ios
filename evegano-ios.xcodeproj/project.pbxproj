@@ -20,6 +20,8 @@
 		11B6B7C31C1C7AFC00D4A986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C11C1C7AFC00D4A986 /* Main.storyboard */; };
 		11B6B7C51C1C7AFC00D4A986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */; };
 		11B6B7C81C1C7AFC00D4A986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11B6B7C61C1C7AFC00D4A986 /* LaunchScreen.storyboard */; };
+		11DD43B31C941D940072C8AB /* MaterialDesignSpiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD43B21C941D940072C8AB /* MaterialDesignSpiner.swift */; settings = {ASSET_TAGS = (); }; };
+		11DD43B51C9440DC0072C8AB /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD43B41C9440DC0072C8AB /* LoaderView.swift */; settings = {ASSET_TAGS = (); }; };
 		11EF85DF1C67C2070067F10E /* CategoryItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF85DE1C67C2070067F10E /* CategoryItemModel.swift */; settings = {ASSET_TAGS = (); }; };
 		F2B2BA79B1A9A9DC01AF0E74 /* Pods_evegano_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A35FE7BEFC5A055DA900C2 /* Pods_evegano_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -41,6 +43,8 @@
 		11B6B7C41C1C7AFC00D4A986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11B6B7C71C1C7AFC00D4A986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11B6B7C91C1C7AFC00D4A986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11DD43B21C941D940072C8AB /* MaterialDesignSpiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialDesignSpiner.swift; sourceTree = "<group>"; };
+		11DD43B41C9440DC0072C8AB /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		11EF85DE1C67C2070067F10E /* CategoryItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItemModel.swift; sourceTree = "<group>"; };
 		19BF6D8597618D1F5739A043 /* Pods-evegano-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		5E2B0B303A0F2BC4057AB518 /* Pods-evegano-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		11B6B7BC1C1C7AFC00D4A986 /* evegano-ios */ = {
 			isa = PBXGroup;
 			children = (
+				11DD43B11C941D6E0072C8AB /* UI */,
 				119D00CF1C5E4485000CD03E /* ViewControllers */,
 				1131F4241C2F266B0099CA77 /* Protocols */,
 				1131F41D1C2F26520099CA77 /* Models */,
@@ -128,6 +133,15 @@
 				11B6B7C91C1C7AFC00D4A986 /* Info.plist */,
 			);
 			path = "evegano-ios";
+			sourceTree = "<group>";
+		};
+		11DD43B11C941D6E0072C8AB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				11DD43B21C941D940072C8AB /* MaterialDesignSpiner.swift */,
+				11DD43B41C9440DC0072C8AB /* LoaderView.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		578B3F7C1BAF3CBCD6A4C073 /* Frameworks */ = {
@@ -271,6 +285,7 @@
 				11588A871C8C794D00118E32 /* CategoryItemsModel.swift in Sources */,
 				11B6B7C01C1C7AFC00D4A986 /* ProductInfoViewController.swift in Sources */,
 				11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */,
+				11DD43B51C9440DC0072C8AB /* LoaderView.swift in Sources */,
 				1131F4231C2F26650099CA77 /* ProductModel.swift in Sources */,
 				1131F4211C2F26650099CA77 /* CategoryModel.swift in Sources */,
 				1131F4221C2F26650099CA77 /* ProducerModel.swift in Sources */,
@@ -278,6 +293,7 @@
 				1131F41C1C2F264D0099CA77 /* ApiRequest.swift in Sources */,
 				11588A851C8C4C4D00118E32 /* CollectionSerializableProtocol.swift in Sources */,
 				11EF85DF1C67C2070067F10E /* CategoryItemModel.swift in Sources */,
+				11DD43B31C941D940072C8AB /* MaterialDesignSpiner.swift in Sources */,
 				119D00D11C5E44C7000CD03E /* AddProductViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
