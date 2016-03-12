@@ -41,7 +41,7 @@ class MaterialDesignSpiner: UIView {
     
     func initProgressLayer() -> CAShapeLayer {
         let progressLayer: CAShapeLayer = CAShapeLayer()
-        progressLayer.strokeColor = self.tintColor.CGColor
+        progressLayer.strokeColor = UIColor.whiteColor().CGColor
         progressLayer.fillColor = nil
         progressLayer.lineWidth = self.lineWidth
         return progressLayer

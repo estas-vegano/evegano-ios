@@ -8,9 +8,10 @@
 
 import UIKit
 
-class AddProductViewController: UIViewController {
-
-    @IBOutlet weak var tempLabel: UILabel!
+class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate {
+    
+    @IBOutlet weak var categoryLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,15 +23,17 @@ class AddProductViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func chooseCategoryButtonDown(sender: UIButton) {
+        let viewController: AddCategoryViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
+        viewController.modalPresentationStyle = .OverCurrentContext
+        viewController.delegate = self
+        presentViewController(viewController, animated: true) { () -> Void in
+            
+        }
     }
-    */
-
+    
+    //AddCategoryViewControllerDelegate
+    func categoryDidSelect(category: CategoryItemModel) {
+        self.categoryLabel.text = category.title
+    }
 }
