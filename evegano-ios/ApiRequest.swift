@@ -33,8 +33,8 @@ class ApiRequest {
     internal func requestCategories(completionHandler:(result: [CategoryItemModel]) -> Void ) {
         let url = kBaseUrl + kApiVersion + kMethodCategoryList
         let header = ["￼Accept-Language": "en"]
-        Alamofire.request(.GET, url, parameters:nil, headers: header).responseCollection { (response: Response<[CategoryItemModel], NSError>) in
-            completionHandler(result: (response.result.value)!)
+        Alamofire.request(.GET, url, parameters:nil, headers: header).responseObject { (response: Response<CategoryItemsModel, NSError>) in
+            completionHandler(result: (response.result.value?.categories)!)
         }
     }
     

@@ -13,6 +13,7 @@
 		1131F4231C2F26650099CA77 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4201C2F26650099CA77 /* ProductModel.swift */; settings = {ASSET_TAGS = (); }; };
 		1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */; settings = {ASSET_TAGS = (); }; };
 		11588A851C8C4C4D00118E32 /* CollectionSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11588A841C8C4C4D00118E32 /* CollectionSerializableProtocol.swift */; settings = {ASSET_TAGS = (); }; };
+		11588A871C8C794D00118E32 /* CategoryItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11588A861C8C794D00118E32 /* CategoryItemsModel.swift */; settings = {ASSET_TAGS = (); }; };
 		119D00D11C5E44C7000CD03E /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D00D01C5E44C7000CD03E /* AddProductViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */; };
 		11B6B7C01C1C7AFC00D4A986 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BF1C1C7AFC00D4A986 /* ProductInfoViewController.swift */; };
@@ -31,6 +32,7 @@
 		1131F4201C2F26650099CA77 /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSerializableProtocol.swift; sourceTree = "<group>"; };
 		11588A841C8C4C4D00118E32 /* CollectionSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSerializableProtocol.swift; sourceTree = "<group>"; };
+		11588A861C8C794D00118E32 /* CategoryItemsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItemsModel.swift; sourceTree = "<group>"; };
 		119D00D01C5E44C7000CD03E /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		11B6B7BA1C1C7AFC00D4A986 /* evegano-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "evegano-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				1131F41F1C2F26650099CA77 /* ProducerModel.swift */,
 				1131F4201C2F26650099CA77 /* ProductModel.swift */,
 				11EF85DE1C67C2070067F10E /* CategoryItemModel.swift */,
+				11588A861C8C794D00118E32 /* CategoryItemsModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11588A871C8C794D00118E32 /* CategoryItemsModel.swift in Sources */,
 				11B6B7C01C1C7AFC00D4A986 /* ProductInfoViewController.swift in Sources */,
 				11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */,
 				1131F4231C2F26650099CA77 /* ProductModel.swift in Sources */,
