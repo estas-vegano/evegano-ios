@@ -8,20 +8,24 @@
 
 import Foundation
 
-final class ProductModel : ResponseObjectSerializable {
-    let productId: Int
-    let title: String
+final class ProductModel : NSObject, ResponseObjectSerializable {
+    var productId: Int?
+    var title: String?
     var info: String?
     var photo: String?
-    var producer: ProducerModel
-    var category: CategoryModel
+    var producer: ProducerModel?
+    var category: CategoryModel?
     
     init?(response: NSHTTPURLResponse, representation: AnyObject) {
-        self.productId = representation.valueForKeyPath("id") as! Int
-        self.title = representation.valueForKeyPath("title") as! String
+        self.productId = representation.valueForKeyPath("id") as? Int
+        self.title = representation.valueForKeyPath("title") as? String
         self.info = representation.valueForKeyPath("info") as? String
         self.photo = representation.valueForKeyPath("photo") as? String
         self.producer = ProducerModel(response: response, representation: representation.valueForKeyPath("producer")!)!
         self.category = CategoryModel(response: response, representation: representation.valueForKeyPath("category")!)!
+    }
+    
+    override init() {
+        super.init()
     }
 }

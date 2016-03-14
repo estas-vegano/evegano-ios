@@ -9,13 +9,13 @@
 import Foundation
 
 class CategoryItemsModel: ResponseObjectSerializable {
-    let categories: [CategoryItemModel]
+    let categories: [CategoryModel]
     
     required init?(response: NSHTTPURLResponse, representation: AnyObject) {
-        var categories: [CategoryItemModel]?
+        var categories: [CategoryModel]?
         if let categoriesObject: AnyObject = representation.valueForKeyPath("categories") {
-            categories = CategoryItemModel.collection(response: response, representation: categoriesObject)
+            categories = CategoryModel.collection(response: response, representation: categoriesObject)
         }
-        self.categories = categories != nil ? categories!: [CategoryItemModel]()
+        self.categories = categories != nil ? categories!: [CategoryModel]()
     }
 }

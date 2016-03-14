@@ -30,11 +30,19 @@ class ApiRequest {
         }
     }
     
-    internal func requestCategories(completionHandler:(result: [CategoryItemModel]) -> Void ) {
+    internal func requestCategories(completionHandler:(result: [CategoryModel]) -> Void ) {
         let url = kBaseUrl + kApiVersion + kMethodCategoryList
         let header = ["￼Accept-Language": "en"]
         Alamofire.request(.GET, url, parameters:nil, headers: header).responseObject { (response: Response<CategoryItemsModel, NSError>) in
             completionHandler(result: (response.result.value?.categories)!)
+        }
+    }
+    
+    internal func requestSubcategories(categoryId: Int, completionHandler:(result: CategoryWithSubcategoriesModel) -> Void ) {
+        let url = kBaseUrl + kApiVersion + kMethodCategoryList + "/" + String(categoryId)
+        let header = ["￼Accept-Language": "en"]
+        Alamofire.request(.GET, url, parameters:nil, headers: header).responseObject { (response: Response<CategoryWithSubcategoriesModel, NSError>) in
+            completionHandler(result: response.result.value!)
         }
     }
     

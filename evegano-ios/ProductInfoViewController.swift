@@ -50,9 +50,9 @@ class ProductInfoViewController: UIViewController {
                 })
             }
             self.nameLabel.text = result.title
-            self.producerLabel.text = result.producer.title
+            self.producerLabel.text = result.producer?.title
             self.descriptionLabel.text = result.info
-            if let ethical = result.producer.ethical {
+            if let ethical = result.producer?.ethical {
                 self.isEthic.text = ethical ? "YES" : "NO"
             } else {
                 self.isEthic.text = "NO"
