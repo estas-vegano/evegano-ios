@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftHEXColors
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        appearance()
         return true
+    }
+    
+    func appearance() {
+        let width: CGFloat = UIScreen.mainScreen().bounds.size.width
+        let height: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: height))
+        view.backgroundColor = UIColor(hex: 0x7CB342)
+        self.window!.rootViewController!.view.addSubview(view)
     }
 
     func applicationWillResignActive(application: UIApplication) {
