@@ -14,7 +14,6 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var producerLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var isEthic: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +51,6 @@ class ProductInfoViewController: UIViewController {
             self.nameLabel.text = result.title
             self.producerLabel.text = result.producer?.title
             self.descriptionLabel.text = result.info
-            if let ethical = result.producer?.ethical {
-                self.isEthic.text = ethical ? "YES" : "NO"
-            } else {
-                self.isEthic.text = "NO"
-            }
         }
     }
     
