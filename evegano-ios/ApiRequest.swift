@@ -21,27 +21,27 @@ enum CodeType {
 }
 
 class ApiRequest {
-    internal func requestCheckProduct(codeId: String, type: String, completionHandler:(result: ProductModel) -> Void) {
+    internal func requestCheckProduct(codeId: String, type: String, completionHandler:(result: Product) -> Void) {
         let url = kBaseUrl + kApiVersion + kMethodCheckProduct
         let parameters = ["code": codeId, "type": type]
         let header = ["￼Accept-Language": "en"]
-        Alamofire.request(.GET, url, parameters:parameters, headers: header).responseObject { (response: Response<ProductModel, NSError>) in
+        Alamofire.request(.GET, url, parameters:parameters, headers: header).responseObject { (response: Response<Product, NSError>) in
             completionHandler(result: (response.result.value)!)
         }
     }
     
-    internal func requestCategories(completionHandler:(result: [CategoryModel]) -> Void ) {
+    internal func requestCategories(completionHandler:(result: [Category]) -> Void ) {
         let url = kBaseUrl + kApiVersion + kMethodCategoryList
         let header = ["￼Accept-Language": "en"]
-        Alamofire.request(.GET, url, parameters:nil, headers: header).responseObject { (response: Response<CategoryItemsModel, NSError>) in
+        Alamofire.request(.GET, url, parameters:nil, headers: header).responseObject { (response: Response<CategoryItems, NSError>) in
             completionHandler(result: (response.result.value?.categories)!)
         }
     }
     
-    internal func requestSubcategories(categoryId: Int, completionHandler:(result: CategoryWithSubcategoriesModel) -> Void ) {
+    internal func requestSubcategories(categoryId: Int, completionHandler:(result: Category) -> Void ) {
         let url = kBaseUrl + kApiVersion + kMethodCategoryList + "/" + String(categoryId)
         let header = ["￼Accept-Language": "en"]
-        Alamofire.request(.GET, url, parameters:nil, headers: header).responseObject { (response: Response<CategoryWithSubcategoriesModel, NSError>) in
+        Alamofire.request(.GET, url, parameters:nil, headers: header).responseObject { (response: Response<Category, NSError>) in
             completionHandler(result: response.result.value!)
         }
     }
