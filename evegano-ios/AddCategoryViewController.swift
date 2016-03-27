@@ -9,15 +9,15 @@
 import UIKit
 
 protocol AddCategoryViewControllerDelegate {
-    func categoryDidSelect(category: CategoryModel)
+    func categoryDidSelect(category: Category)
 }
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, StoryboardIdentifierProtocol {
     //constants
     static let storyboardId: String = "AddCategoryViewControllerId"
     //variables
-    var category: CategoryModel?
-    var categories: [CategoryModel] = []
+    var category: Category?
+    var categories: [Category] = []
     
     var delegate: AddCategoryViewControllerDelegate?
     
@@ -40,7 +40,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
         let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
         spiner.startAnimating()
         self.tableView.hidden = true
-        ApiRequest().requestCategories { (result:[CategoryModel]) -> Void in
+        ApiRequest().requestCategories { (result:[Category]) -> Void in
             spiner.stopAnimating()
             self.tableView.hidden = false
             self.categories = result
@@ -51,7 +51,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
         let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
         spiner.startAnimating()
         self.tableView.hidden = true
-        ApiRequest().requestSubcategories((self.category?.categoryId)!) { (result:CategoryWithSubcategoriesModel) -> Void in
+        ApiRequest().requestSubcategories((self.category?.categoryId)!) { (result:Category) -> Void in
             spiner.stopAnimating()
             self.tableView.hidden = false
             self.categories = result.children!
@@ -70,7 +70,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SimpleTableViewCell = tableView.dequeueReusableCellWithIdentifier(SimpleTableViewCell.reuseIdentifier()) as! SimpleTableViewCell
         
-        let categoryItem: CategoryModel = self.categories[indexPath.row]
+        let categoryItem: Category = self.categories[indexPath.row]
         cell.setCellTitle(categoryItem.title)
         return cell
     }
@@ -80,7 +80,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let categoryItem: CategoryModel = self.categories[indexPath.row]
+        let categoryItem: Category = self.categories[indexPath.row]
         self.delegate?.categoryDidSelect(categoryItem)
         self.dismissViewControllerAnimated(true, completion: nil)
     }

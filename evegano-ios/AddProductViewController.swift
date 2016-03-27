@@ -8,14 +8,20 @@
 
 import UIKit
 
-class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate {
-    
-    var productModel: ProductModel = ProductModel()
+class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate, StoryboardIdentifierProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    //constants
+    static let storyboardId: String = "AddProductViewControllerId"
+    //variables
+    var productModel: Product = Product()
     var isSubcategory: Bool = false
+    
+    var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var subcategoryLabel: UILabel!
     @IBOutlet weak var subcategoryView: UIView!
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var addPhotoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +31,6 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         updateUI()
     }
 
@@ -42,8 +47,8 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
             self.categoryLabel.text = "Выберете категорию"
             self.subcategoryView.hidden = true
         }
-        if let subcategory = self.productModel.category?.sub_category {
-            self.subcategoryLabel.text = subcategory.title
+        if let subcategory = self.productModel.category?.children {
+            self.subcategoryLabel.text = subcategory.first?.title
         } else {
             self.subcategoryLabel.text = "Выберете подкатегорию"
         }
@@ -71,13 +76,36 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
             
         }
     }
+    
+    @IBAction func backButtonDown(sender: UIButton) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    @IBAction func addPhotoButtonDown(sender: UIButton) {
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    //UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        self.photoImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.photoImageView.layer.cornerRadius = 65
+        self.addPhotoLabel.hidden = true
+    }
     //AddCategoryViewControllerDelegate
-    func categoryDidSelect(category: CategoryModel) {
+    func categoryDidSelect(category: Category) {
         if self.isSubcategory {
-            self.productModel.category?.sub_category = category
+            self.productModel.category?.children = [category]
         } else {
             self.productModel.category = category
         }
         updateUI()
+    }
+    //Protocol methods
+    static func storyboardIdentifier() -> String {
+        return storyboardId
     }
 }
