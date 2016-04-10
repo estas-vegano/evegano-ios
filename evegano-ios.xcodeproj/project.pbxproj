@@ -31,6 +31,8 @@
 		11DD43BE1C94A7100072C8AB /* SimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD43BD1C94A7100072C8AB /* SimpleTableViewCell.swift */; };
 		11DD43C01C94A7920072C8AB /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD43BF1C94A7920072C8AB /* ReuseIdentifierProtocol.swift */; };
 		11DD43C21C94A9150072C8AB /* ViewHeightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DD43C11C94A9150072C8AB /* ViewHeightProtocol.swift */; };
+		11DDA56C1CB944A200A21B1D /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DDA56B1CB944A200A21B1D /* ScannerViewController.swift */; };
+		11F7036F1CBAC22B00A26322 /* CameraBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F7036E1CBAC22B00A26322 /* CameraBorderView.swift */; };
 		F2B2BA79B1A9A9DC01AF0E74 /* Pods_evegano_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A35FE7BEFC5A055DA900C2 /* Pods_evegano_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		11DD43BD1C94A7100072C8AB /* SimpleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewCell.swift; sourceTree = "<group>"; };
 		11DD43BF1C94A7920072C8AB /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		11DD43C11C94A9150072C8AB /* ViewHeightProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHeightProtocol.swift; sourceTree = "<group>"; };
+		11DDA56B1CB944A200A21B1D /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		11F7036E1CBAC22B00A26322 /* CameraBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraBorderView.swift; sourceTree = "<group>"; };
 		19BF6D8597618D1F5739A043 /* Pods-evegano-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		5E2B0B303A0F2BC4057AB518 /* Pods-evegano-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-evegano-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-evegano-ios/Pods-evegano-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +129,7 @@
 				119D00D01C5E44C7000CD03E /* AddProductViewController.swift */,
 				11DD43B61C9475F70072C8AB /* AddCategoryViewController.swift */,
 				11AE52FE1C98B2F30069D29F /* MainViewController.swift */,
+				11DDA56B1CB944A200A21B1D /* ScannerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 		11DD43B11C941D6E0072C8AB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				11F7036E1CBAC22B00A26322 /* CameraBorderView.swift */,
 				11DD43B21C941D940072C8AB /* MaterialDesignSpiner.swift */,
 				11DD43B41C9440DC0072C8AB /* LoaderView.swift */,
 				11DD43BD1C94A7100072C8AB /* SimpleTableViewCell.swift */,
@@ -332,6 +338,7 @@
 				1131F4221C2F26650099CA77 /* Producer.swift in Sources */,
 				11DD43B91C9477A80072C8AB /* StoryboardIdentifierProtocol.swift in Sources */,
 				111DAEA81CA7F4B3000C47EE /* ProductInfoViewModel.swift in Sources */,
+				11F7036F1CBAC22B00A26322 /* CameraBorderView.swift in Sources */,
 				1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */,
 				11DD43C01C94A7920072C8AB /* ReuseIdentifierProtocol.swift in Sources */,
 				1131F41C1C2F264D0099CA77 /* ApiRequest.swift in Sources */,
@@ -343,6 +350,7 @@
 				11DD43B31C941D940072C8AB /* MaterialDesignSpiner.swift in Sources */,
 				119D00D11C5E44C7000CD03E /* AddProductViewController.swift in Sources */,
 				11AE52FF1C98B2F30069D29F /* MainViewController.swift in Sources */,
+				11DDA56C1CB944A200A21B1D /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
