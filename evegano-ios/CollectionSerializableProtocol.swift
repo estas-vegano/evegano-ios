@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 public protocol ResponseCollectionSerializable {
-    static func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Self]
+    static func collection(representation: AnyObject?) -> [Self]
 }
 
 extension Alamofire.Request {
@@ -24,7 +24,7 @@ extension Alamofire.Request {
             switch result {
             case .Success(let value):
                 if let response = response {
-                    return .Success(T.collection(response: response, representation: value))
+                    return .Success(T.collection(value))
                 } else {
                     let failureReason = "Response collection could not be serialized due to nil response"
                     let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)

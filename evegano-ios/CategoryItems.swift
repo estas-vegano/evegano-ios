@@ -11,10 +11,10 @@ import Foundation
 class CategoryItems: ResponseObjectSerializable {
     let categories: [Category]
     
-    required init?(response: NSHTTPURLResponse, representation: AnyObject) {
+    required init?(representation: AnyObject?) {
         var categories: [Category]?
-        if let categoriesObject: AnyObject = representation.valueForKeyPath("categories") {
-            categories = Category.collection(response: response, representation: categoriesObject)
+        if let categoriesObject = representation as? [AnyObject] {
+            categories = Category.collection(categoriesObject)
         }
         self.categories = categories != nil ? categories!: [Category]()
     }

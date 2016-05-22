@@ -61,7 +61,7 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     func loadData() {
         let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
         spiner.startAnimating()
-        ApiRequest().requestCheckProduct("2", type: "barcode") { (result: Product) in
+        ApiRequest().requestCheckProduct("2", type: "barcode") { (result, error) in
             spiner.stopAnimating()
             self.productInfoViewModel.product = result
             self.productInformationView.hidden = false

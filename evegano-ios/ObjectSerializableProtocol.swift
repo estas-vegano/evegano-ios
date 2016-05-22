@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 public protocol ResponseObjectSerializable {
-    init?(response: NSHTTPURLResponse, representation: AnyObject)
+    init?(representation: AnyObject?)
 }
 
 extension Request {
@@ -25,7 +25,7 @@ extension Request {
             case .Success(let value):
                 if let
                     response = response,
-                    responseObject = T(response: response, representation: value)
+                    responseObject = T(representation: value)
                 {
                     return .Success(responseObject)
                 } else {

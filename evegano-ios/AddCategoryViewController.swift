@@ -40,10 +40,12 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
         let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
         spiner.startAnimating()
         self.tableView.hidden = true
-        ApiRequest().requestCategories { (result:[Category]) -> Void in
+        ApiRequest().requestCategories { (result, error) in
             spiner.stopAnimating()
             self.tableView.hidden = false
-            self.categories = result
+            if let categories = result {
+                self.categories = categories
+            }
             self.tableView.reloadData()
         }
     }
@@ -51,10 +53,12 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
         let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
         spiner.startAnimating()
         self.tableView.hidden = true
-        ApiRequest().requestSubcategories((self.category?.categoryId)!) { (result:Category) -> Void in
+        ApiRequest().requestSubcategories((self.category?.categoryId)!) { (result, error) in
             spiner.stopAnimating()
             self.tableView.hidden = false
-            self.categories = result.children!
+            if let categories = result?.children {
+                self.categories = categories
+            }
             self.tableView.reloadData()
         }
     }

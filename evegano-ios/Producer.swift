@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Producer {
+final class Producer : ResponseObjectSerializable {
     let producerId: Int
     var title: String
     var ethical: Bool?
     
-    init?(response: NSHTTPURLResponse, representation: AnyObject) {
-        self.producerId = representation.valueForKeyPath("id") as! Int
-        self.title = representation.valueForKeyPath("title") as! String
-        self.ethical = representation.valueForKeyPath("ethical") as? Bool
+    init?(representation: AnyObject?) {
+        self.producerId = representation?.valueForKeyPath("id") as! Int
+        self.title = representation?.valueForKeyPath("title") as! String
+        self.ethical = representation?.valueForKeyPath("ethical") as? Bool
     }
 }

@@ -66,10 +66,37 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     //MARK: Delegate Methods
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         for metaData in metadataObjects {
-            if let decodedData:AVMetadataMachineReadableCodeObject = metaData as? AVMetadataMachineReadableCodeObject {
+            if let decodedData: AVMetadataMachineReadableCodeObject = metaData as? AVMetadataMachineReadableCodeObject {
+                self.captureSession.stopRunning()
+                
                 self.informationTextLabel.text = "Штрих код считан.\nИдет проверка продукта.\nЖдите...";
                 let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
                 spiner.startAnimating()
+                
+                ApiRequest().requestCheckProduct(decodedData.stringValue, type: decodedData.type, completion: { (result, error) -> Void in
+                    if let error = error {
+                        if error.errorCode == -7 {//Product code not found.
+                            let alertController = UIAlertController(title: "No product found", message: "Would you like to add it?", preferredStyle: .Alert)
+                            let dismiss: UIAlertAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Destructive, handler:{(alert:UIAlertAction) in
+                                alertController.dismissViewControllerAnimated(true, completion: nil)
+                                
+                                let modalViewController: AddProductViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
+                                modalViewController.modalPresentationStyle = .OverCurrentContext
+                                modalViewController.productModel.productId = Int(decodedData.stringValue)
+                                modalViewController.codeType = decodedData.type
+                                self.presentViewController(modalViewController, animated: true, completion: nil)
+                            })
+                            alertController.addAction(dismiss)
+                            let cancel: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive, handler:{(alert:UIAlertAction) in
+                                alertController.dismissViewControllerAnimated(true, completion: nil)
+                            })
+                            alertController.addAction(cancel)
+                            self.presentViewController(alertController, animated: true, completion: nil)
+                        }
+                    } else {
+                        
+                    }
+                });
                 
                 self.codeInformationLabel.hidden = false
                 self.codeInformationLabel.text = "Type: " + decodedData.type + "\nID: " + decodedData.stringValue

@@ -14,23 +14,23 @@ final class Category: ResponseObjectSerializable, ResponseCollectionSerializable
     var parent: Category?
     var children: [Category]?
     
-    init?(response: NSHTTPURLResponse, representation: AnyObject) {
-        self.categoryId = representation.valueForKeyPath("id") as! Int
-        self.title = representation.valueForKeyPath("title") as! String
-        if let parent = representation.valueForKeyPath("parent") {
-            self.parent = Category(response: response, representation: parent)
+    init?(representation: AnyObject?) {
+        self.categoryId = representation?.valueForKeyPath("id") as! Int
+        self.title = representation?.valueForKeyPath("title") as! String
+        if let parent = representation?.valueForKeyPath("parent") {
+            self.parent = Category(representation: parent)
         }
-        if let children = representation.valueForKeyPath("children") {
-            self.children = Category.collection(response: response, representation: children)
+        if let children = representation?.valueForKeyPath("children") {
+            self.children = Category.collection(children)
         }
     }
     
-    static func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Category] {
+    static func collection(representation: AnyObject?) -> [Category] {
         var categories: [Category] = []
         
         if let representation = representation as? [[String: AnyObject]] {
             for userRepresentation in representation {
-                if let category = Category(response: response, representation: userRepresentation) {
+                if let category = Category(representation: userRepresentation) {
                     categories.append(category)
                 }
             }

@@ -17,20 +17,20 @@ final class Product : NSObject, ResponseObjectSerializable {
     var category: Category?
     var codes: [Code]?
     
-    init?(response: NSHTTPURLResponse, representation: AnyObject) {
-        self.productId = representation.valueForKeyPath("id") as? Int
-        self.title = representation.valueForKeyPath("title") as? String
-        self.info = representation.valueForKeyPath("info") as? String
-        self.photo = representation.valueForKeyPath("photo") as? String
+    init?(representation: AnyObject?) {
+        self.productId = representation?.valueForKeyPath("id") as? Int
+        self.title = representation?.valueForKeyPath("title") as? String
+        self.info = representation?.valueForKeyPath("info") as? String
+        self.photo = representation?.valueForKeyPath("photo") as? String
         
-        if let producer = representation.valueForKeyPath("producer") {
-            self.producer = Producer(response: response, representation: producer)
+        if let producer = representation?.valueForKeyPath("producer") {
+            self.producer = Producer(representation: producer)
         }
-        if let category = representation.valueForKeyPath("category") {
-            self.category = Category(response: response, representation: category)
+        if let category = representation?.valueForKeyPath("category") {
+            self.category = Category(representation: category)
         }
-        if let codes = representation.valueForKeyPath("codes") {
-            self.codes = Code.collection(response: response, representation: codes)
+        if let codes = representation?.valueForKeyPath("codes") {
+            self.codes = Code.collection(codes)
         }
     }
     
