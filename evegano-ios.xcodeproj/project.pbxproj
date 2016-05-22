@@ -16,6 +16,9 @@
 		1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */; };
 		11588A851C8C4C4D00118E32 /* CollectionSerializableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11588A841C8C4C4D00118E32 /* CollectionSerializableProtocol.swift */; };
 		11588A871C8C794D00118E32 /* CategoryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11588A861C8C794D00118E32 /* CategoryItems.swift */; };
+		117D134F1CC278BA0021C22A /* ChooseProductTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D134E1CC278BA0021C22A /* ChooseProductTypeViewController.swift */; };
+		117D13511CC27C9D0021C22A /* SimpleWithImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D13501CC27C9D0021C22A /* SimpleWithImageTableViewCell.swift */; };
+		117D13531CC2A6A80021C22A /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D13521CC2A6A80021C22A /* ProductType.swift */; };
 		119D00D11C5E44C7000CD03E /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D00D01C5E44C7000CD03E /* AddProductViewController.swift */; };
 		11AE52FF1C98B2F30069D29F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE52FE1C98B2F30069D29F /* MainViewController.swift */; };
 		11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B6B7BD1C1C7AFC00D4A986 /* AppDelegate.swift */; };
@@ -47,6 +50,9 @@
 		1131F4251C2F26770099CA77 /* ObjectSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSerializableProtocol.swift; sourceTree = "<group>"; };
 		11588A841C8C4C4D00118E32 /* CollectionSerializableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSerializableProtocol.swift; sourceTree = "<group>"; };
 		11588A861C8C794D00118E32 /* CategoryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItems.swift; sourceTree = "<group>"; };
+		117D134E1CC278BA0021C22A /* ChooseProductTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProductTypeViewController.swift; sourceTree = "<group>"; };
+		117D13501CC27C9D0021C22A /* SimpleWithImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleWithImageTableViewCell.swift; sourceTree = "<group>"; };
+		117D13521CC2A6A80021C22A /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		119D00D01C5E44C7000CD03E /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		11AE52FE1C98B2F30069D29F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		11B6B7BA1C1C7AFC00D4A986 /* evegano-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "evegano-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +112,7 @@
 				1131F4201C2F26650099CA77 /* Product.swift */,
 				11588A861C8C794D00118E32 /* CategoryItems.swift */,
 				111DAEA41CA71998000C47EE /* Code.swift */,
+				117D13521CC2A6A80021C22A /* ProductType.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -130,6 +137,7 @@
 				11DD43B61C9475F70072C8AB /* AddCategoryViewController.swift */,
 				11AE52FE1C98B2F30069D29F /* MainViewController.swift */,
 				11DDA56B1CB944A200A21B1D /* ScannerViewController.swift */,
+				117D134E1CC278BA0021C22A /* ChooseProductTypeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 				11DD43B21C941D940072C8AB /* MaterialDesignSpiner.swift */,
 				11DD43B41C9440DC0072C8AB /* LoaderView.swift */,
 				11DD43BD1C94A7100072C8AB /* SimpleTableViewCell.swift */,
+				117D13501CC27C9D0021C22A /* SimpleWithImageTableViewCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -333,12 +342,14 @@
 				11B6B7BE1C1C7AFC00D4A986 /* AppDelegate.swift in Sources */,
 				11DD43B51C9440DC0072C8AB /* LoaderView.swift in Sources */,
 				111DAEA51CA71998000C47EE /* Code.swift in Sources */,
+				117D13511CC27C9D0021C22A /* SimpleWithImageTableViewCell.swift in Sources */,
 				1131F4231C2F26650099CA77 /* Product.swift in Sources */,
 				1131F4211C2F26650099CA77 /* Category.swift in Sources */,
 				1131F4221C2F26650099CA77 /* Producer.swift in Sources */,
 				11DD43B91C9477A80072C8AB /* StoryboardIdentifierProtocol.swift in Sources */,
 				111DAEA81CA7F4B3000C47EE /* ProductInfoViewModel.swift in Sources */,
 				11F7036F1CBAC22B00A26322 /* CameraBorderView.swift in Sources */,
+				117D134F1CC278BA0021C22A /* ChooseProductTypeViewController.swift in Sources */,
 				1131F4261C2F26770099CA77 /* ObjectSerializableProtocol.swift in Sources */,
 				11DD43C01C94A7920072C8AB /* ReuseIdentifierProtocol.swift in Sources */,
 				1131F41C1C2F264D0099CA77 /* ApiRequest.swift in Sources */,
@@ -349,6 +360,7 @@
 				11DD43C21C94A9150072C8AB /* ViewHeightProtocol.swift in Sources */,
 				11DD43B31C941D940072C8AB /* MaterialDesignSpiner.swift in Sources */,
 				119D00D11C5E44C7000CD03E /* AddProductViewController.swift in Sources */,
+				117D13531CC2A6A80021C22A /* ProductType.swift in Sources */,
 				11AE52FF1C98B2F30069D29F /* MainViewController.swift in Sources */,
 				11DDA56C1CB944A200A21B1D /* ScannerViewController.swift in Sources */,
 			);

@@ -9,14 +9,6 @@
 import Foundation
 import RxSwift
 
-enum ProductInfo: String {
-    case Vegan = "vegan"
-    case Vegeterian = "vegeterian"
-    case Fish = "fish"
-    case Meat = "meat"
-    case Milk = "milk"
-}
-
 class ProductInfoViewModel {
     var disposeBag = DisposeBag()
     //MARK: UI
@@ -43,11 +35,11 @@ class ProductInfoViewModel {
             })
         }
         if let productInfo = product?.info {
-            self.productInfoImage.onNext(getProductInfoImage(productInfo))
+            self.productInfoImage.onNext(productInfoImage(productInfo))
         }
     }
     
-    func getProductInfoImage(productInfo: String) -> UIImage {
+    func productInfoImage(productInfo: String) -> UIImage {
         return UIImage(named: productInfo+"_icon")!
     }
 }
