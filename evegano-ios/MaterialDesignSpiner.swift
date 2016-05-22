@@ -10,18 +10,18 @@ import UIKit
 
 class MaterialDesignSpiner: UIView {
     //constants
-    let kStrokeStartKey: String = "strokeStart"
-    let kStrokeEndKey: String = "strokeEnd"
-    let kTransformKey: String = "transform.rotation"
-    let kAnimationRotationKey: String = "materialdesignspiner.rotation"
-    let kAnimationStrokeKey: String = "materialdesignspiner.stroke"
+    let kStrokeStartKey = "strokeStart"
+    let kStrokeEndKey = "strokeEnd"
+    let kTransformKey = "transform.rotation"
+    let kAnimationRotationKey = "materialdesignspiner.rotation"
+    let kAnimationStrokeKey = "materialdesignspiner.stroke"
     
-    let timingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    let timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
     
     //varibales
     var duration: NSTimeInterval = 1.5
-    var lineWidth: CGFloat = 2
-    var isAnimating: Bool = false
+    var lineWidth: CGFloat = 4
+    var isAnimating = false
     
     lazy var progressLayer: CAShapeLayer = self.initProgressLayer()
     
@@ -40,7 +40,7 @@ class MaterialDesignSpiner: UIView {
     }
     
     func initProgressLayer() -> CAShapeLayer {
-        let progressLayer: CAShapeLayer = CAShapeLayer()
+        let progressLayer = CAShapeLayer()
         progressLayer.strokeColor = UIColor.whiteColor().CGColor
         progressLayer.fillColor = nil
         progressLayer.lineWidth = self.lineWidth
@@ -52,7 +52,7 @@ class MaterialDesignSpiner: UIView {
             return
         }
         
-        let animation: CABasicAnimation = CABasicAnimation()
+        let animation = CABasicAnimation()
         animation.keyPath = kTransformKey
         animation.duration = self.duration / 0.375
         animation.fromValue = 0.0
@@ -61,21 +61,21 @@ class MaterialDesignSpiner: UIView {
         animation.removedOnCompletion = false
         self.progressLayer.addAnimation(animation, forKey: kAnimationRotationKey)
         
-        let headAnimation: CABasicAnimation = CABasicAnimation()
+        let headAnimation = CABasicAnimation()
         headAnimation.keyPath = kStrokeStartKey
         headAnimation.duration = self.duration / 1.5
         headAnimation.fromValue = 0.0
         headAnimation.toValue = 0.25
         headAnimation.timingFunction = self.timingFunction
         
-        let tailAnimation: CABasicAnimation  = CABasicAnimation()
+        let tailAnimation  = CABasicAnimation()
         tailAnimation.keyPath = kStrokeEndKey
         tailAnimation.duration = self.duration / 1.5
         tailAnimation.fromValue = 0.0
         tailAnimation.toValue = 1.0
         tailAnimation.timingFunction = self.timingFunction
         
-        let endHeadAnimation: CABasicAnimation = CABasicAnimation()
+        let endHeadAnimation = CABasicAnimation()
         endHeadAnimation.keyPath = kStrokeStartKey
         endHeadAnimation.beginTime = 1.5 / 1.5
         endHeadAnimation.duration = self.duration / 3.0
@@ -83,7 +83,7 @@ class MaterialDesignSpiner: UIView {
         endHeadAnimation.toValue = 1.0
         endHeadAnimation.timingFunction = self.timingFunction
         
-        let endTailAnimation: CABasicAnimation = CABasicAnimation()
+        let endTailAnimation = CABasicAnimation()
         endTailAnimation.keyPath = kStrokeEndKey
         endTailAnimation.beginTime = 1.5 / 1.5
         endTailAnimation.duration = self.duration / 3.0
@@ -91,7 +91,7 @@ class MaterialDesignSpiner: UIView {
         endTailAnimation.toValue = 1.0
         endTailAnimation.timingFunction = self.timingFunction
         
-        let animations: CAAnimationGroup = CAAnimationGroup()
+        let animations = CAAnimationGroup()
         animations.duration = self.duration
         animations.animations = [headAnimation, tailAnimation, endHeadAnimation, endTailAnimation]
         animations.repeatCount = Float.infinity
@@ -112,7 +112,7 @@ class MaterialDesignSpiner: UIView {
     }
     
     func updatePath() {
-        let center: CGPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+        let center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
         let radius: CGFloat = CGRectGetHeight(self.bounds) / 2 - 1.5 / 2;
         let startAngle: CGFloat = 0.0;
         let endAngle: CGFloat = (CGFloat)(2.0*M_PI);

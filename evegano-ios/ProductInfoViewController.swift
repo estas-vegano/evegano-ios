@@ -12,7 +12,7 @@ import RxSwift
 
 class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol {
     //MARK: constants
-    static let storyboardId: String = "ProductInfoViewControllerId"
+    static let storyboardId = "ProductInfoViewControllerId"
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

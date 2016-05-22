@@ -10,10 +10,10 @@ import UIKit
 
 class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate, StoryboardIdentifierProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //constants
-    static let storyboardId: String = "AddProductViewControllerId"
-    //variables
-    var productModel: Product = Product()
-    var isSubcategory: Bool = false
+    static let storyboardId = "AddProductViewControllerId"
+    //MARK: variables
+    var productModel = Product()
+    var isSubcategory = false
     
     var imagePicker: UIImagePickerController!
     

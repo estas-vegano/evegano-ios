@@ -14,10 +14,10 @@ protocol AddCategoryViewControllerDelegate {
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, StoryboardIdentifierProtocol {
     //constants
-    static let storyboardId: String = "AddCategoryViewControllerId"
+    static let storyboardId = "AddCategoryViewControllerId"
     //variables
     var category: Category?
-    var categories: [Category] = []
+    var categories = [Category]()
     
     var delegate: AddCategoryViewControllerDelegate?
     
@@ -60,7 +60,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
     }
     //Actions
     @IBAction func closeButtonDown(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     //UITableViewDelegate methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

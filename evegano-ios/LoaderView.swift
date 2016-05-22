@@ -34,7 +34,7 @@ class LoaderView: UIView {
     }
 
     convenience init(loaderType: LoaderType) {
-        let window: UIWindow = UIApplication.sharedApplication().windows.first!
+        let window = UIApplication.sharedApplication().windows.first!
         self.init(loaderType: .LoaderTypeBigAtCenter, view: window)
     }
     

@@ -10,15 +10,12 @@ import Foundation
 import Alamofire
 import AlamofireImage
 
-let kBaseUrl: String = "http://evegano.free-node.ru/api"
-let kApiVersion: String = "/v1"
-let kMethodCheckProduct: String = "/check"
-let kMethodCategoryList: String = "/categories"
-
-enum CodeType {
-    case BarcodeType
-    case QrcodeType
-}
+let kBaseUrl = "http://evegano.free-node.ru/api"
+let kApiVersion = "/v1"
+let kMethodCheckProduct = "/check"
+let kMethodCategoryList = "/categories"
+let kMethodAddProduct = "/add"
+let kMethodAddProducer = "/add-producer"
 
 class ApiRequest {
     internal func requestCheckProduct(codeId: String, type: String, completionHandler:(result: Product) -> Void) {

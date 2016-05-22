@@ -11,7 +11,7 @@ import UIKit
 class SimpleTableViewCell: UITableViewCell, ViewHeightProtocol, ReuseIdentifierProtocol {
     //constants
     static let cellHeight: CGFloat = 44.0
-    static let reuseId: String = "SimpleTableViewCellId"
+    static let reuseId = "SimpleTableViewCellId"
     
     @IBOutlet weak var titleLabel: UILabel!
     
