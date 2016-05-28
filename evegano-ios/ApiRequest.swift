@@ -25,6 +25,7 @@ class ApiRequest {
         case SubcategoriesList = "/categories/"
         case AddProduct = "/add"
         case AddProducer = "/add-producer"
+        case AddImage = "/add/"
     }
     
     private enum HTTPMethod {
@@ -58,13 +59,19 @@ class ApiRequest {
         }
     }
     
+    internal func requestAddImage(productId: String, completion:(result: AnyObject?, error: ApiError?) -> Void ) {
+        ApiRequest().request(.POST, endpoint: .AddImage, resource: String(productId)+"/photo", parameters: nil) { (result, error) in
+            completion(result: result, error: error)
+        }
+    }
+    
     private func request(method: HTTPMethod, endpoint: APIEndpoint, resource: String? = nil, parameters: [String: AnyObject]?, completion:(result: AnyObject?, error: ApiError?)->Void) {
         var url = baseURL + apiVersion + endpoint.rawValue
         if let resources = resource {
             url = url + resources
         }
         let header = ["￼Accept-Language": "en"]
-        Alamofire.request(method == .GET ? .GET : .POST, url, parameters:parameters, headers: header).responseJSON { response in
+        Alamofire.request(method == .GET ? .GET : .POST, url, parameters:parameters, encoding: method == .GET ? .URL : .JSON, headers: header).responseJSON { response in
             if response.result.isSuccess {
                 if let JSON = response.result.value as? [String: AnyObject] {
                     let errorCode = JSON["error_code"] as? Int
