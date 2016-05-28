@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol AddProductViewControllerDelegate {
+    func addProductViewControllerDidDissmiss()
+}
+
 class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate, StoryboardIdentifierProtocol, ChooseProductTypeViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     //constants
     static let storyboardId = "AddProductViewControllerId"
     //MARK: variables
+    var delegate: AddProductViewControllerDelegate?
+    
     var productModel = Product()
     var isSubcategory = false
     var producerTitle: String?
@@ -82,6 +88,7 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
     }
     
     @IBAction func backButtonDown(sender: UIButton) {
+        self.delegate?.addProductViewControllerDidDissmiss()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -107,13 +114,16 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
         if let producerTitle = self.producerTitle {
             //Add producer before, get producer id
             ApiRequest().requestAddProducer(producerTitle, ethical: false) { (result, error) -> Void in
-                var parameters: Dictionary<String, AnyObject> = self.parameters()
-                if let result = result {
-                    parameters["producer_id"] = result.producerId
-                }
-                //Add product
-                ApiRequest().requestAddProduct(parameters) { (result) -> Void in
-                    
+                
+                if (error == nil || error!.errorCode == -13 ) {
+                    var parameters: Dictionary<String, AnyObject> = self.parameters()
+                    if let result = result {
+                        parameters["producer_id"] = result.producerId
+                    }
+                    //Add product
+                    ApiRequest().requestAddProduct(parameters) { (result) -> Void in
+                        
+                    }
                 }
             }
         }

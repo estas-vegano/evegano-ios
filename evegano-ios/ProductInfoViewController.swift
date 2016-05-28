@@ -10,6 +10,10 @@ import UIKit
 import SwiftHEXColors
 import RxSwift
 
+protocol ProductInfoViewControllerDelegate {
+    func productInfoViewControllerDidDissmiss()
+}
+
 class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol {
     //MARK: constants
     static let storyboardId = "ProductInfoViewControllerId"
@@ -20,8 +24,12 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     @IBOutlet weak var productEthicalImageView: UIImageView!
     @IBOutlet weak var productInformationView: UIView!
     
+    var delegate: ProductInfoViewControllerDelegate?
+    
     var productInfoViewModel = ProductInfoViewModel()
     let disposeBag = DisposeBag()
+    
+    var code: Code?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,12 +67,14 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     }
     
     func loadData() {
-        let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
-        spiner.startAnimating()
-        ApiRequest().requestCheckProduct("2", type: "barcode") { (result, error) in
-            spiner.stopAnimating()
-            self.productInfoViewModel.product = result
-            self.productInformationView.hidden = false
+        if let code = self.code {
+            let spiner = LoaderView(loaderType: .LoaderTypeBigAtTop, view: self.view)
+            spiner.startAnimating()
+            ApiRequest().requestCheckProduct(code.code!, type: code.type!) { (result, error) in
+                spiner.stopAnimating()
+                self.productInfoViewModel.product = result
+                self.productInformationView.hidden = false
+            }
         }
     }
     //MARK: UI methods
@@ -85,7 +95,8 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     }
     
     @IBAction func backButtonDown(sender: UIButton) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.delegate?.productInfoViewControllerDidDissmiss()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     //MARK: Protocol methods
     static func storyboardIdentifier() -> String {

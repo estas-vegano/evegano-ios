@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ProductInfoViewControllerDelegate, AddProductViewControllerDelegate {
     //MARK: IBOutlet
     @IBOutlet weak var informationTextLabel: UILabel!
     @IBOutlet weak var codeInformationLabel: UILabel!
@@ -25,6 +25,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         self.informationTextLabel.text = "Наведите камеру\nна штрих код";
         self.setupCaptureSession()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     //MARK: Session Startup
     private func setupCaptureSession() {
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
@@ -56,6 +62,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
         
     }
+    
+    private func reset() {
+        self.informationTextLabel.text = "Наведите камеру\nна штрих код"
+        self.codeInformationLabel.hidden = true
+        self.codeInformationLabel.text = nil
+        self.captureSession.startRunning()
+    }
+    
     //MARK: Metadata capture
     private func addMetaDataCaptureOutToSession() {
         let metadata = AVCaptureMetadataOutput()
@@ -74,6 +88,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 spiner.startAnimating()
                 
                 ApiRequest().requestCheckProduct(decodedData.stringValue, type: decodedData.type, completion: { (result, error) -> Void in
+                    spiner.stopAnimating()
                     if let error = error {
                         if error.errorCode == -7 {//Product code not found.
                             let alertController = UIAlertController(title: "No product found", message: "Would you like to add it?", preferredStyle: .Alert)
@@ -84,17 +99,23 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                                 modalViewController.modalPresentationStyle = .OverCurrentContext
                                 modalViewController.productModel.productId = Int(decodedData.stringValue)
                                 modalViewController.codeType = decodedData.type
+                                modalViewController.delegate = self
                                 self.presentViewController(modalViewController, animated: true, completion: nil)
                             })
                             alertController.addAction(dismiss)
                             let cancel: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive, handler:{(alert:UIAlertAction) in
+                                self.reset()
                                 alertController.dismissViewControllerAnimated(true, completion: nil)
                             })
                             alertController.addAction(cancel)
                             self.presentViewController(alertController, animated: true, completion: nil)
                         }
                     } else {
-                        
+                        let modalViewController: ProductInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
+                        modalViewController.modalPresentationStyle = .OverCurrentContext
+                        modalViewController.code = result?.codes?.first
+                        modalViewController.delegate = self
+                        self.presentViewController(modalViewController, animated: true, completion: nil)
                     }
                 });
                 
@@ -103,6 +124,15 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }
         }
     }
+    
+    func productInfoViewControllerDidDissmiss() {
+        self.reset()
+    }
+    
+    func addProductViewControllerDidDissmiss() {
+        self.reset()
+    }
+    
     //MARK: Utility Functions
     private func showError(error:String)
     {

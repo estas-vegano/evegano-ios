@@ -40,6 +40,6 @@ class ProductInfoViewModel {
     }
     
     func productInfoImage(productInfo: String) -> UIImage {
-        return UIImage(named: productInfo+"_icon")!
+        return UIImage(named: productInfo.lowercaseString + "_icon")!
     }
 }
