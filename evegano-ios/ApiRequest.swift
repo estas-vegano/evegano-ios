@@ -10,52 +10,61 @@ import Foundation
 import Alamofire
 import AlamofireImage
 
-let kBaseUrl = "http://evegano.free-node.ru/api"
-let kApiVersion = "/v1"
-let kMethodCheckProduct = "/check"
-let kMethodCategoryList = "/categories"
-let kMethodAddProduct = "/add"
-let kMethodAddProducer = "/add-producer"
-
 class ApiRequest {
     
     enum ResponseServerError: Int {
         case NoError = 0
     }
     
+    private let baseURL = "http://evegano.free-node.ru/api"
+    private let apiVersion = "/v1"
+    
+    private enum APIEndpoint: String {
+        case CheckProduct = "/check"
+        case CategoriesList = "/categories"
+        case SubcategoriesList = "/categories/"
+        case AddProduct = "/add"
+        case AddProducer = "/add-producer"
+    }
+    
+    private enum HTTPMethod {
+        case GET
+        case POST
+    }
+    
     internal func requestCheckProduct(codeId: String, type: String, completion:(result: Product?, error: ApiError?) -> Void) {
-        let url = kBaseUrl + kApiVersion + kMethodCheckProduct
         let parameters = ["code": codeId, "type": type]
-        ApiRequest().request(true, url: url, parameters: parameters) { (result, error) in
+        ApiRequest().request(.GET, endpoint: .CheckProduct, parameters: parameters) { (result, error) in
             completion(result: Product(representation: result), error: error)
         }
     }
     
     internal func requestAddProduct(parameters: Dictionary<String, AnyObject>, completion:(result: Product?, error: ApiError?) -> Void) {
-        let url = kBaseUrl + kApiVersion + kMethodAddProduct
-        ApiRequest().request(false, url: url, parameters: parameters) { (result, error) -> Void in
+        ApiRequest().request(.POST, endpoint: .AddProduct, parameters: parameters) { (result, error) -> Void in
             completion(result: Product(representation: result), error: error)
         }
     }
     
     internal func requestAddProducer(title: String, ethical: Bool, completion:(result: Producer?, error: ApiError?) -> Void) {
-        let url = kBaseUrl + kApiVersion + kMethodAddProducer
         let parameters = ["title": title]
-        ApiRequest().request(false, url: url, parameters: parameters) { (result, error) in
+        ApiRequest().request(.POST, endpoint: .AddProducer, parameters: parameters) { (result, error) in
             completion(result: Producer(representation: result), error: error)
         }
     }
     
     internal func requestCategories(completion:(result: [Category]?, error: ApiError?) -> Void ) {
-        let url = kBaseUrl + kApiVersion + kMethodCategoryList
-        ApiRequest().request(true, url: url, parameters: nil) { (result, error) in
+        ApiRequest().request(.GET, endpoint: .CategoriesList, parameters: nil) { (result, error) in
             completion(result: Category.collection(result), error: error)
         }
     }
     
-    internal func request(isGET: Bool, url: String, parameters: [String: AnyObject]?, completion:(result: AnyObject?, error: ApiError?)->Void) {
+    private func request(method: HTTPMethod, endpoint: APIEndpoint, resource: String? = nil, parameters: [String: AnyObject]?, completion:(result: AnyObject?, error: ApiError?)->Void) {
+        var url = baseURL + apiVersion + endpoint.rawValue
+        if let resources = resource {
+            url = url + resources
+        }
         let header = ["￼Accept-Language": "en"]
-        Alamofire.request(isGET ? .GET : .POST, url, parameters:parameters, headers: header).responseJSON { response in
+        Alamofire.request(method == .GET ? .GET : .POST, url, parameters:parameters, headers: header).responseJSON { response in
             if response.result.isSuccess {
                 if let JSON = response.result.value as? [String: AnyObject] {
                     let errorCode = JSON["error_code"] as? Int
@@ -71,8 +80,7 @@ class ApiRequest {
     }
     
     internal func requestSubcategories(categoryId: Int, completion:(result: Category?, error: ApiError?) -> Void ) {
-        let url = kBaseUrl + kApiVersion + kMethodCategoryList + "/" + String(categoryId)
-        ApiRequest().request(true, url: url, parameters: nil) { (result, error) in
+        ApiRequest().request(.GET, endpoint: .SubcategoriesList, resource: String(categoryId), parameters: nil) { (result, error) in
             completion(result: Category(representation: result), error: error)
         }
     }
