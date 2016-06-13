@@ -62,9 +62,12 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
             self.tableView.reloadData()
         }
     }
-    //Actions
+    func goBackAction(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    //IBActions
     @IBAction func closeButtonDown(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        goBackAction()
     }
     //UITableViewDelegate methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,7 +89,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let categoryItem: Category = self.categories[indexPath.row]
         self.delegate?.categoryDidSelect(categoryItem)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        goBackAction()
     }
     //Protocol methods
     static func storyboardIdentifier() -> String {

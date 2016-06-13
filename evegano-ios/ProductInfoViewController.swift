@@ -24,7 +24,7 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     @IBOutlet weak var productEthicalImageView: UIImageView!
     @IBOutlet weak var productInformationView: UIView!
     
-    var delegate: ProductInfoViewControllerDelegate?
+    var delegate: ViewControllerDismissProtocol?
     
     var productInfoViewModel = ProductInfoViewModel()
     let disposeBag = DisposeBag()
@@ -95,7 +95,7 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     }
     
     @IBAction func backButtonDown(sender: UIButton) {
-        self.delegate?.productInfoViewControllerDidDissmiss()
+        self.delegate?.viewControllerDidDismiss()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     //MARK: Protocol methods

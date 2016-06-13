@@ -46,9 +46,12 @@ class ChooseProductTypeViewController: UIViewController, StoryboardIdentifierPro
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let productType: ProductType = self.productTypes[indexPath.row]
         self.delegate?.productTypeDidSelect(productType)
-        self.dismissViewControllerAnimated(true, completion: {})
+        self.navigationController?.popViewControllerAnimated(true)
     }
-    
+    //MARK: IBActions
+    @IBAction func backButtonDown(sender: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     //MARK: Protocol methods
     static func storyboardIdentifier() -> String {
         return storyboardId

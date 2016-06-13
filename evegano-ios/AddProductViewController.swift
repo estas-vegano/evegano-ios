@@ -8,36 +8,45 @@
 
 import UIKit
 
-protocol AddProductViewControllerDelegate {
-    func addProductViewControllerDidDissmiss()
-}
-
-class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate, StoryboardIdentifierProtocol, ChooseProductTypeViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-    //constants
-    static let storyboardId = "AddProductViewControllerId"
+class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate, StoryboardIdentifierProtocol, ChooseProductTypeViewControllerDelegate, ChooseProductInfoDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: variables
-    var delegate: AddProductViewControllerDelegate?
+    var delegate: ViewControllerDismissProtocol?
     
     var productModel = Product()
     var isSubcategory = false
     var producerTitle: String?
     var codeType: String?
     
-    var imagePicker: UIImagePickerController!
-    
+    private var imagePicker: UIImagePickerController!
+    private var isProductName = false
+    //MARK: IBOutlet
     @IBOutlet weak var subcategoryView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var addPhotoLabel: UILabel!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var producerTextField: UITextField!
-    @IBOutlet weak var typeButton: UIButton!
-    @IBOutlet weak var categoryButton: UIButton!
-    @IBOutlet weak var subcategoryButton: UIButton!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var typeValueLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleValueLabel: UILabel!
+    @IBOutlet weak var producerLabel: UILabel!
+    @IBOutlet weak var producerValueLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryValeLabel: UILabel!
+    @IBOutlet weak var subcategoryLabel: UILabel!
+    @IBOutlet weak var subcategoryValueLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        self.typeLabel.text = "Type"
+        self.typeValueLabel.text = "Select type"
+        self.titleLabel.text = "Title"
+        self.titleValueLabel.text = "Enter title"
+        self.producerLabel.text = "Producer"
+        self.producerValueLabel.text = "Enter producer"
+        self.categoryLabel.text = "Category"
+        self.categoryValeLabel.text = "Choose category"
+        self.subcategoryLabel.text = "Subcategory"
+        self.subcategoryValueLabel.text = "Choose subcategory"
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,21 +56,21 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
     //MARK: UI
     func updateUI() {
         if let category = self.productModel.category {
-            self.categoryButton.setTitle(category.title, forState: .Normal)
+            self.categoryValeLabel.text = category.title
             self.subcategoryView.hidden = false
         } else {
-            self.categoryButton.setTitle("Выберете категорию", forState: .Normal)
+            self.categoryValeLabel.text = "Выберете категорию"
             self.subcategoryView.hidden = true
         }
         if let subcategory = self.productModel.category?.children {
-            self.subcategoryButton.setTitle(subcategory.first?.title, forState: .Normal)
+            self.subcategoryValueLabel.text = subcategory.first?.title
         } else {
-            self.subcategoryButton.setTitle("Выберете подкатегорию", forState: .Normal)
+            self.subcategoryValueLabel.text = "Выберете подкатегорию"
         }
         if let productType = self.productModel.info {
-            self.typeButton.setTitle(productType, forState: .Normal)
+            self.typeValueLabel.text = productType
         } else {
-            self.typeButton.setTitle("Выберете тип продукта", forState: .Normal)
+            self.typeValueLabel.text = "Select type"
         }
     }
     //MARK: IBActions
@@ -71,9 +80,7 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
         let viewController: AddCategoryViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
         viewController.modalPresentationStyle = .OverCurrentContext
         viewController.delegate = self
-        presentViewController(viewController, animated: true) { () -> Void in
-            
-        }
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func chooseSubcategoryButtonDown(sender: UIButton) {
@@ -83,31 +90,39 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
         viewController.modalPresentationStyle = .OverCurrentContext
         viewController.delegate = self
         viewController.category = self.productModel.category
-        presentViewController(viewController, animated: true) {
-        }
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func backButtonDown(sender: UIButton) {
-        self.delegate?.addProductViewControllerDidDissmiss()
+        self.delegate?.viewControllerDidDismiss()
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func chooseProducerButtonDown(sender: AnyObject) {
+        let viewController: ChooseProductTitleViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
+        viewController.delegate = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+        self.isProductName = false
+    }
+    
+    @IBAction func chooseTitleButtonDown(sender: UIButton) {
+        let viewController: ChooseProductTitleViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
+        viewController.delegate = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+        self.isProductName = true
     }
     
     @IBAction func addPhotoButtonDown(sender: UIButton) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .Camera
-        
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func chooseTypeAction(sender: UIButton) {
         let viewController: ChooseProductTypeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
-        viewController.modalPresentationStyle = .OverCurrentContext
         viewController.delegate = self
-
-        presentViewController(viewController, animated: true) { () -> Void in
-            
-        }
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func sendProductAction(sender: UIButton) {
@@ -145,17 +160,6 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
         self.photoImageView.layer.cornerRadius = 65
         self.addPhotoLabel.hidden = true
     }
-    //MARK: UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == self.titleTextField {
-            self.productModel.title = self.titleTextField.text
-            self.producerTextField.becomeFirstResponder()
-        } else {
-            self.producerTitle = self.producerTextField.text
-            textField.resignFirstResponder()
-        }
-        return true
-    }
     //MARK: AddCategoryViewControllerDelegate
     func categoryDidSelect(category: Category) {
         if self.isSubcategory {
@@ -170,6 +174,16 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
         self.productModel.info = productType.rawValue
         updateUI()
     }
+    //MARK: ChooseProductInfoDelegate
+    func productInfoDidSelect(title: String) {
+        if self.isProductName {
+            self.titleValueLabel.text = title
+        } else {
+            self.producerValueLabel.text = title
+        }
+    }
+    //MARK: constants
+    private static let storyboardId = "AddProductViewControllerId"
     //MARK: Protocol methods
     static func storyboardIdentifier() -> String {
         return storyboardId

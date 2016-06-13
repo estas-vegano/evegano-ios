@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ProductInfoViewControllerDelegate, AddProductViewControllerDelegate {
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ViewControllerDismissProtocol {
     //MARK: IBOutlet
     @IBOutlet weak var informationTextLabel: UILabel!
     @IBOutlet weak var codeInformationLabel: UILabel!
@@ -20,32 +20,35 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureDevice: AVCaptureDevice?
     var captureLayer: AVCaptureVideoPreviewLayer?
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.informationTextLabel.text = "Наведите камеру\nна штрих код";
-        self.setupCaptureSession()
+//        self.setupCaptureSession()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setupCaptureSession()
     }
     
     //MARK: Session Startup
     private func setupCaptureSession() {
-        self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        
-        do{
-            let deviceInput = try AVCaptureDeviceInput(device:self.captureDevice!)
-            //Add the input feed to the session and start it
-            self.captureSession.addInput(deviceInput)
-            self.setupPreviewLayer( {
-                self.captureSession.startRunning()
-                self.addMetaDataCaptureOutToSession()
-            })
-            self.borderView.hidden = false
-        } catch let error as NSError {
-            self.showError(error.localizedDescription)
+        if self.captureDevice == nil {
+            self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+            
+            do{
+                let deviceInput = try AVCaptureDeviceInput(device:self.captureDevice!)
+                //Add the input feed to the session and start it
+                self.captureSession.addInput(deviceInput)
+                self.setupPreviewLayer( {
+                    self.captureSession.startRunning()
+                    self.addMetaDataCaptureOutToSession()
+                })
+                self.borderView.hidden = false
+            } catch let error as NSError {
+                self.showError(error.localizedDescription)
+            }
         }
     }
     
@@ -90,17 +93,19 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 ApiRequest().requestCheckProduct(decodedData.stringValue, type: decodedData.type, completion: { (result, error) -> Void in
                     spiner.stopAnimating()
                     if let error = error {
-                        if error.errorCode == -7 {//Product code not found.
+                        if error.errorCode == -7 {//Product code not found.                            
                             let alertController = UIAlertController(title: "No product found", message: "Would you like to add it?", preferredStyle: .Alert)
                             let dismiss: UIAlertAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Destructive, handler:{(alert:UIAlertAction) in
                                 alertController.dismissViewControllerAnimated(true, completion: nil)
                                 
                                 let modalViewController: AddProductViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController()
-                                modalViewController.modalPresentationStyle = .OverCurrentContext
+//                                modalViewController.modalPresentationStyle = .OverCurrentContext
                                 modalViewController.productModel.productId = Int(decodedData.stringValue)
                                 modalViewController.codeType = decodedData.type
                                 modalViewController.delegate = self
-                                self.presentViewController(modalViewController, animated: true, completion: nil)
+                                let navigationController = UINavigationController(rootViewController: modalViewController)
+                                navigationController.setNavigationBarHidden(true, animated: false)
+                                self.presentViewController(navigationController, animated: true, completion: nil)
                             })
                             alertController.addAction(dismiss)
                             let cancel: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Destructive, handler:{(alert:UIAlertAction) in
@@ -125,11 +130,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
     }
     
-    func productInfoViewControllerDidDissmiss() {
-        self.reset()
-    }
-    
-    func addProductViewControllerDidDissmiss() {
+    func viewControllerDidDismiss() {
         self.reset()
     }
     
@@ -142,9 +143,5 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         })
         alertController.addAction(dismiss)
         self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func backButtonDown(sender: AnyObject) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }
