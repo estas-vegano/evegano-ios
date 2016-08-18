@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AddProductViewController: UIViewController, AddCategoryViewControllerDelegate, StoryboardIdentifierProtocol, ChooseProductTypeViewControllerDelegate, ChooseProductInfoDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: variables
@@ -19,6 +21,7 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
     
     private var imagePicker: UIImagePickerController!
     private var isProductName = false
+    private let disposeBag = DisposeBag()
     //MARK: IBOutlet
     @IBOutlet weak var subcategoryView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
@@ -33,6 +36,7 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
     @IBOutlet weak var categoryValeLabel: UILabel!
     @IBOutlet weak var subcategoryLabel: UILabel!
     @IBOutlet weak var subcategoryValueLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +51,18 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
         self.categoryValeLabel.text = "Choose category"
         self.subcategoryLabel.text = "Subcategory"
         self.subcategoryValueLabel.text = "Choose subcategory"
+        
+//        var typeObservable: Observable<String> = Observable.create { (text) -> Disposable in
+//            
+//        }
+        
+//        var addProductViewModel = AddProductViewModel(input: (
+//            type: typeValueLabel.rx_text.asObserver(),
+//            title: titleValueLabel.rx_text
+//            ) {
+//        
+//        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -72,6 +88,10 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
         } else {
             self.typeValueLabel.text = "Select type"
         }
+        rx_canAddProduct().subscribeNext { [weak self] canAdd -> Void in
+            self?.addButton.enabled = canAdd
+        }
+        .addDisposableTo(disposeBag)
     }
     //MARK: IBActions
     @IBAction func chooseCategoryButtonDown(sender: UIButton) {
@@ -151,6 +171,21 @@ class AddProductViewController: UIViewController, AddCategoryViewControllerDeleg
                 "code": self.productModel.productId!,
 //                "producer_id": (self.productModel.producer?.producerId)!,
                 "category_id": (self.productModel.category?.children?.first?.categoryId)!]
+    }
+    
+    //MARK: rx
+    func rx_canAddProduct() -> Observable<Bool> {
+        let hasType = self.typeValueLabel.text?.characters.count > 0
+        let hasTitle = self.titleValueLabel.text?.characters.count > 0
+        let hasProducer = self.producerValueLabel.text?.characters.count > 0
+        let hasCategory = self.categoryValeLabel.text?.characters.count > 0
+        let hasSubcategory = self.subcategoryValueLabel.text?.characters.count > 0
+        let canAddProduct = hasType && hasTitle && hasProducer && hasCategory && hasSubcategory
+        return Observable.create({ (observer) -> Disposable in
+            observer.onNext(canAddProduct)
+            return AnonymousDisposable {
+            }
+        })
     }
     
     //MARK: UIImagePickerControllerDelegate

@@ -10,9 +10,9 @@ import UIKit
 
 class CameraBorderView: UIView {
     //MARK: Constants
-    let borderLineWidth: CGFloat = 6.0
-    let borderLineHeight: CGFloat = 20.0
-    let borderLineColor: UIColor = UIColor(hex: 0x8AC349)!
+    private let borderLineWidth: CGFloat = 6.0
+    private let borderLineHeight: CGFloat = 20.0
+    private let borderLineColor = UIColor(hex: 0x8AC349)!
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)

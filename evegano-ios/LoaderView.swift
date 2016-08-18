@@ -18,7 +18,7 @@ class LoaderView: UIView {
     let loaderSize: CGFloat = 60.0
     let loadSizeBig: CGFloat = 80.0
     
-    var spinerView: MaterialDesignSpiner?
+    private var spinerView: MaterialDesignSpiner?
     
     init(loaderType: LoaderType, view: UIView) {
         var frame: CGRect

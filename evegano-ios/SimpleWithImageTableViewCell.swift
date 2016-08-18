@@ -9,10 +9,9 @@
 import UIKit
 
 class SimpleWithImageTableViewCell: UITableViewCell, ViewHeightProtocol, ReuseIdentifierProtocol {
-    //MARK: constants
-    static let cellHeight: CGFloat = 50.0
-    static let reuseId = "SimpleWithImageTableViewCellId"
-    //MARK: IBOutlets
+    private static let cellHeight: CGFloat = 50.0
+    private static let reuseId = "SimpleWithImageTableViewCellId"
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     

@@ -11,7 +11,11 @@ import AVFoundation
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ViewControllerDismissProtocol {
     //MARK: IBOutlet
-    @IBOutlet weak var informationTextLabel: UILabel!
+    @IBOutlet weak var informationTextLabel: UILabel! {
+        didSet {
+            informationTextLabel.text = "Наведите камеру\nна штрих код";
+        }
+    }
     @IBOutlet weak var codeInformationLabel: UILabel!
     @IBOutlet weak var borderView: CameraBorderView!
     @IBOutlet weak var cameraView: UIView!
@@ -22,8 +26,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.informationTextLabel.text = "Наведите камеру\nна штрих код";
 //        self.setupCaptureSession()
     }
     

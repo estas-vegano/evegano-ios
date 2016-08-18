@@ -9,9 +9,9 @@
 import UIKit
 
 class SimpleTableViewCell: UITableViewCell, ViewHeightProtocol, ReuseIdentifierProtocol {
-    //constants
-    static let cellHeight: CGFloat = 44.0
-    static let reuseId = "SimpleTableViewCellId"
+
+    private static let cellHeight: CGFloat = 44.0
+    private static let reuseId = "SimpleTableViewCellId"
     
     @IBOutlet weak var titleLabel: UILabel!
     

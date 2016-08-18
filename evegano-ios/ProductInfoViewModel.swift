@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 
 class ProductInfoViewModel {
-    var disposeBag = DisposeBag()
     //MARK: UI
     var productName = PublishSubject<String?>()
     var productImage = PublishSubject<UIImage?>()

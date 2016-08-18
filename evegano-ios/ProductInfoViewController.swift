@@ -18,7 +18,11 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     //MARK: constants
     static let storyboardId = "ProductInfoViewControllerId"
     
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: UIImageView! {
+        didSet {
+            createImageView()
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var productTypeImageView: UIImageView!
     @IBOutlet weak var productEthicalImageView: UIImageView!
@@ -34,8 +38,6 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        createImageView()
-        
         self.nameLabel.hidden = true
         self.productInfoViewModel.productName.subscribeNext { name in
             self.nameLabel.hidden = false
@@ -78,7 +80,7 @@ class ProductInfoViewController: UIViewController, StoryboardIdentifierProtocol 
         }
     }
     //MARK: UI methods
-    func createImageView() {
+    private func createImageView() {
         let circle: CAShapeLayer = CAShapeLayer()
         let radius: CGFloat = self.photoImageView.frame.size.width / 2.0
         circle.position = CGPointZero

@@ -916,6 +916,7 @@
                     <navigationItem key="navigationItem" id="pDX-pP-Z7O"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="addButton" destination="9sS-dH-XdW" id="oJh-Qh-vft"/>
                         <outlet property="addPhotoLabel" destination="cwU-Y6-Rjf" id="Dnw-dn-WCm"/>
                         <outlet property="categoryLabel" destination="Wjy-Ue-hYZ" id="YMh-PZ-1SN"/>
                         <outlet property="categoryValeLabel" destination="w4e-Xk-z4N" id="05s-uq-UJp"/>
