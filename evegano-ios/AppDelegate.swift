@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func appearance() {
-        let width: CGFloat = UIScreen.mainScreen().bounds.size.width
-        let height: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = UIApplication.sharedApplication().statusBarFrame.size.height
         let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: height))
         view.backgroundColor = UIColor(hex: 0x7CB342)
         self.window!.rootViewController!.view.addSubview(view)
